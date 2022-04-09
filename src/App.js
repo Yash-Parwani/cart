@@ -1,23 +1,26 @@
+/* this is our root component
 
-import './App.css';
+How do we know that?
+Well if we go to index.js inside it if we see we give the App component to ReactDom.render as root component
+*/
+
+
+import React from 'react'
+
+//importing CartItem
+
+import CartItem from './CartItem';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-       
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <h1> Cart </h1>
+        {/* Here in this root component we will render our cart Item component */}
+
+        {/* Rendering Cart Component*/}
+        <CartItem />
+
+        
     </div>
   );
 }
