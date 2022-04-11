@@ -42,7 +42,24 @@ class CartItem extends  React.Component{
 
 
     // now for a class component to be a react component we need to give the class component a method called as render
+    increaseQuantity = () =>{
+        //  setState form 1
+        // this.setState({
+        //     // this.state.qty gives current qty
+        //     qty : this.state.qty +1
+        // });
 
+        //setState form 2
+        // form 2 of setState is used when we want previous state, we will use  the second form
+
+        this.setState((prevState)=>{
+          return {
+              // prevState.qty gives the previous value of qty
+              qty: prevState.qty +1
+          }
+        });
+        console.log("this.state" , this.state);
+    }
     render(){
         // using object destructuring to avoid repeatedly using this.state
         const {price,title,qty} = this.state;
@@ -59,12 +76,12 @@ class CartItem extends  React.Component{
                            {/*<div style={ {color: '#777'}}> {this.state.price} </div>*/}
                            <div style={ {color: '#777'}}> {price} </div>
                            {/*<div style={ {color: '#777}'}}>this.state.qty</div> */}
-                           <div style={ {color: '#777}'}}>qty</div>
+                           <div style={ {color: '#777}'}}>{qty}</div>
 
                            <div className='cart-item-actions'>
                                {/* Buttons*/}
 
-                               <img alt='increase' className='action-icons' src="https://cdn-icons.flaticon.com/png/512/3303/premium/3303893.png?token=exp=1649525765~hmac=ba39abe1749f867d96ec425d578b282f" />
+                               <img alt='increase' className='action-icons' src="https://cdn-icons.flaticon.com/png/512/3303/premium/3303893.png?token=exp=1649525765~hmac=ba39abe1749f867d96ec425d578b282f" onClick={this.increaseQuantity}/>
                                <img alt='decrease' className='action-icons' src="https://cdn-icons-png.flaticon.com/512/992/992683.png" />
                                <img alt='delete' className='action-icons' src="https://cdn-icons.flaticon.com/png/512/3405/premium/3405244.png?token=exp=1649525836~hmac=0b6e3262936331a55b72e839a2040366" />
                            </div>
