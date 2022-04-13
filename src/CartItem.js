@@ -60,6 +60,24 @@ class CartItem extends  React.Component{
         });
         console.log("this.state" , this.state);
     }
+ 
+    // decreaseQuantity will also be an arrow function since we want to avoid binding issues in react
+
+    decreaseQuantity= () => {
+         const {qty} = this.state;
+        
+
+         if(qty === 0){
+            return;
+        }
+       
+
+        this.setState((prevState)=>{
+            return {
+                qty : prevState.qty - 1
+            }
+        })
+    }
     render(){
         // using object destructuring to avoid repeatedly using this.state
         const {price,title,qty} = this.state;
@@ -82,7 +100,7 @@ class CartItem extends  React.Component{
                                {/* Buttons*/}
 
                                <img alt='increase' className='action-icons' src="https://cdn-icons.flaticon.com/png/512/3303/premium/3303893.png?token=exp=1649525765~hmac=ba39abe1749f867d96ec425d578b282f" onClick={this.increaseQuantity}/>
-                               <img alt='decrease' className='action-icons' src="https://cdn-icons-png.flaticon.com/512/992/992683.png" />
+                               <img alt='decrease' className='action-icons' src="https://cdn-icons-png.flaticon.com/512/992/992683.png" onClick = {this.decreaseQuantity}/>
                                <img alt='delete' className='action-icons' src="https://cdn-icons.flaticon.com/png/512/3405/premium/3405244.png?token=exp=1649525836~hmac=0b6e3262936331a55b72e839a2040366" />
                            </div>
                </div>
