@@ -7,18 +7,19 @@ Well if we go to index.js inside it if we see we give the App component to React
 
 import React from 'react'
 
-//importing CartItem
+//importing Cart
 
-import CartItem from './CartItem';
+import Cart from './Cart.js'
+
 
 function App() {
   return (
     <div className="App">
-        <h1> Cart </h1>
-        {/* Here in this root component we will render our cart Item component */}
+       
+        {/* Here in this root component we will render our cart component */}
 
         {/* Rendering Cart Component*/}
-        <CartItem />
+        <Cart/>
 
         
     </div>

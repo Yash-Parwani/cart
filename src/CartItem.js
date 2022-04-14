@@ -44,21 +44,25 @@ class CartItem extends  React.Component{
     // now for a class component to be a react component we need to give the class component a method called as render
     increaseQuantity = () =>{
         //  setState form 1
-        // this.setState({
-        //     // this.state.qty gives current qty
-        //     qty : this.state.qty +1
-        // });
-
+        //  this.setState({
+        //      // this.state.qty gives current qty
+        //      qty : this.state.qty +1
+        //  });
+        
         //setState form 2
         // form 2 of setState is used when we want previous state, we will use  the second form
 
-        this.setState((prevState)=>{
-          return {
-              // prevState.qty gives the previous value of qty
-              qty: prevState.qty +1
-          }
-        });
-        console.log("this.state" , this.state);
+         this.setState((prevState)=>{
+           return {
+               // prevState.qty gives the previous value of qty
+               qty: prevState.qty +1
+           }
+         },()=>{
+            console.log("This state", this.state);
+         });
+
+         
+        
     }
  
     // decreaseQuantity will also be an arrow function since we want to avoid binding issues in react
@@ -82,6 +86,7 @@ class CartItem extends  React.Component{
         // using object destructuring to avoid repeatedly using this.state
         const {price,title,qty} = this.state;
         // this method should return some jsx which will define ui of the component
+        console.log("render");
         return (
             <div className='cart-item'>
                <div className='left-block'>
