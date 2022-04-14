@@ -2,43 +2,7 @@
 import React from 'react'
  
 class CartItem extends  React.Component{
-    // this is a class based component
-
-    // CartItem will inherit featuers from Component class in React 
-
-
-    /*
-    Now below lines of code will help to add state to our component
-
-    what is state?
-
-      State is just a way to store local data for that component and state is just a plain js object
-
-
-      So we can add state by defining a constructor to our class
-
-    */
-
-      constructor(){
-          // in js we have to use this when using classes
-
-          /* but before defining or writting any method we need to call base  / super class constructor
-                     If we dont do that than it will show same error over there saying we need to call the base class constructor
-
-
-                     we do it using super()
-
-             */
-
-          super();
-          // the below line will help to define state for the given class
-          this.state = {
-               price : 999,
-               title : 'Phone',
-               qty : 1,
-               img : ''
-          }
-      }
+   
 
 
     // now for a class component to be a react component we need to give the class component a method called as render
@@ -84,9 +48,10 @@ class CartItem extends  React.Component{
     }
     render(){
         // using object destructuring to avoid repeatedly using this.state
-        const {price,title,qty} = this.state;
+    
+        const {price,title,qty} = this.props.product;
         // this method should return some jsx which will define ui of the component
-        console.log("render");
+    
         return (
             <div className='cart-item'>
                <div className='left-block'>
@@ -104,8 +69,8 @@ class CartItem extends  React.Component{
                            <div className='cart-item-actions'>
                                {/* Buttons*/}
 
-                               <img alt='increase' className='action-icons' src="https://cdn-icons.flaticon.com/png/512/3303/premium/3303893.png?token=exp=1649525765~hmac=ba39abe1749f867d96ec425d578b282f" onClick={this.increaseQuantity}/>
-                               <img alt='decrease' className='action-icons' src="https://cdn-icons-png.flaticon.com/512/992/992683.png" onClick = {this.decreaseQuantity}/>
+                               <img alt='increase' className='action-icons' onClick={this.increaseQuantity} src="https://www.flaticon.com/free-icon/add_992651" />
+                               <img alt='decrease' className='action-icons'  onClick = {this.decreaseQuantity} src="https://cdn-icons-png.flaticon.com/512/992/992683.png"/>
                                <img alt='delete' className='action-icons' src="https://cdn-icons.flaticon.com/png/512/3405/premium/3405244.png?token=exp=1649525836~hmac=0b6e3262936331a55b72e839a2040366" />
                            </div>
                </div>
