@@ -58,6 +58,37 @@ class Cart extends React.Component{
         ]
         }
     }
+
+    handleIncreaseQuantity = (product)=>{
+        console.log("Hey please increase the qty of this product : ", product );
+
+        // getting products array from state
+        const { products } = this.state;
+
+        // finding index of product inside products so that we can change property of that particular product only
+
+        const index = products.indexOf(product)
+
+        // once we get the index go to that index and change the property/ qty
+
+        products[index].qty +=1;
+
+        // now we have succesfully change qty of the sent product
+
+        /* now we want to notify in the set state as well
+           So what we will do is pass the above products array in which we made change to the products property in the state of cart component
+
+
+           since we made change to the products array we need to notify the state as well since we need to trigger re render as well
+           which will be done using setState
+
+        */
+         this.setState({
+             products : products
+         });
+        
+
+    }
     render(){
         const { products } = this.state;
         return(
@@ -72,7 +103,11 @@ class Cart extends React.Component{
 
 
 
-                return <CartItem product = {product}  key ={product.id}/>
+                return <CartItem 
+                product = {product}  
+                key ={product.id}
+                onIncreaseQuantity = {this.handleIncreaseQuantity}
+                />
 
                 //Be careful as to what we return inside props
                 //over here we return product which contains a list of properites and not products which contain a list of products as props to CartItem
