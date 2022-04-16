@@ -12,12 +12,15 @@ import React from 'react'
 import Cart from './Cart.js'
 
 
+import Navbar from './Navbar.js';
+
+
 function App() {
   return (
     <div className="App">
        
         {/* Here in this root component we will render our cart component */}
-
+        <Navbar />
         {/* Rendering Cart Component*/}
         <Cart/>
 
