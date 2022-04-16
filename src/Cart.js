@@ -89,6 +89,68 @@ class Cart extends React.Component{
         
 
     }
+
+    handleDecreaseQuantity = (product)=>{
+        console.log("Hey please increase the qty of this product : ", product );
+
+        // getting products array from state
+        const { products } = this.state;
+
+        // finding index of product inside products so that we can change property of that particular product only
+
+        const index = products.indexOf(product)
+
+        // once we get the index go to that index and change the property/ qty
+
+        // checking if quantity is 0
+        if(products[index].qty === 0){
+            this.handleDeleteProduct(products[index].id);
+            // after deleting when qty is 0 we should return
+            return;
+        }
+
+        products[index].qty -=1;
+
+        // now we have succesfully change qty of the sent product
+
+        /* now we want to notify in the set state as well
+           So what we will do is pass the above products array in which we made change to the products property in the state of cart component
+
+
+           since we made change to the products array we need to notify the state as well since we need to trigger re render as well
+           which will be done using setState
+
+        */
+         this.setState({
+             products : products
+         });
+        
+
+    }
+
+      // here we will get the product id since we want to know which product we have to delete from the products array
+      /* because product.id is the only unique key we are having to identify a particular product
+         agar hum sirf product lete toh waise toh kai products ho sakte hai like we can have multiple watches , laptops , etc
+         but to differentiate between them , we would need a unique key which is product.id
+
+      */
+    handleDeleteProduct = (id) => {
+       // getting the products array from this.state
+
+       const { products } = this.state
+
+
+       // filtering the particular product to return an array which does not consist of element with the above id
+       const items = products.filter((item)=> item.id !== id);
+
+
+       // setting the updated products by setState.  
+    this.setState({
+        products : items
+    });
+    }
+
+   
     render(){
         const { products } = this.state;
         return(
@@ -107,6 +169,9 @@ class Cart extends React.Component{
                 product = {product}  
                 key ={product.id}
                 onIncreaseQuantity = {this.handleIncreaseQuantity}
+                onDecreaseQuantity = {this.handleDecreaseQuantity}
+                onDeleteProduct = {this.handleDeleteProduct}
+
                 />
 
                 //Be careful as to what we return inside props
