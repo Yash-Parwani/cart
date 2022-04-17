@@ -15,13 +15,13 @@ const CartItem = (props) => {
 
 
 
-        const { price, title, qty } = props.product;
+        const { price, title, qty, img } = props.product;
         // this method should return some jsx which will define ui of the component
 
         return (
             <div className='cart-item'>
                 <div className='left-block'>
-                    <img style={styles.image} />
+                    <img style={styles.image} src={img}/>
                 </div>
                 <div className='right-block'>
                     {/*  using the state of the component that we had defined*/}
@@ -37,13 +37,13 @@ const CartItem = (props) => {
 
                         <img alt='increase' className='action-icons'
                             onClick={() => onIncreaseQuantity(product)}
-                            src="https://www.flaticon.com/free-icon/add_992651" />
+                            src="https://cdn-icons-png.flaticon.com/512/992/992651.png" />
                         <img alt='decrease' className='action-icons'
                             onClick={() => onDecreaseQuantity(product)}
                             src="https://cdn-icons-png.flaticon.com/512/992/992683.png" />
                         <img alt='delete' className='action-icons'
                             onClick={() => onDeleteProduct(product.id)}
-                            src="https://cdn-icons.flaticon.com/png/512/3405/premium/3405244.png?token=exp=1649525836~hmac=0b6e3262936331a55b72e839a2040366" />
+                            src="https://cdn-icons.flaticon.com/png/512/2907/premium/2907762.png?token=exp=1650214042~hmac=779e87422b557f062e106f52bccd6e74" />
                     </div>
                 </div>
             </div>

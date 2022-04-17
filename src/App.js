@@ -51,21 +51,21 @@ class App extends React.Component {
                 price : 999,
                 title : 'Phone',
                 qty : 1,
-                img : '',
+                img : 'https://www.mockupworld.co/wp-content/uploads/dynamic/2022/03/free-samsung-galaxy-s22-ultra-mockup-psd-870x0-c-default.jpg',
                 id : 1
             },
             {
                 price : 99,
                 title : 'Watch',
                 qty : 1,
-                img : '',
+                img : 'https://images.unsplash.com/photo-1548666006-a8296ec63c89?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Z3Nob2NrJTIwd2F0Y2h8ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60',
                 id: 2
             },
             {
                 price : 9999,
                 title : 'Laptop',
                 qty : 1,
-                img : '',
+                img : 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8bGFwdG9wc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60',
                 id : 3
             }
         ]
@@ -116,7 +116,7 @@ class App extends React.Component {
         // once we get the index go to that index and change the property/ qty
 
         // checking if quantity is 0
-        if(products[index].qty === 0){
+        if(products[index].qty === 1){
             this.handleDeleteProduct(products[index].id);
             // after deleting when qty is 0 we should return
             return;
@@ -177,6 +177,39 @@ class App extends React.Component {
        return count;
     }
 
+
+  getCartTotal = () =>{
+    // getting the products from state using destructuring
+      
+    const{products} = this.state;
+
+    let cartTotal = 0;
+
+    /*
+    Now there are three ways to loop over products
+
+    way 1 = using for loop like we did for count
+
+    way 2 = using map() 
+
+    way 3 = using reduce()
+
+    reduce functions is used when we want to reduce an array into a single value
+
+
+    here we will be using way 2
+
+    Note : in map() function we dont do += i.e i+=1 wont work , we will have to do i = i+1
+
+
+    */
+   products.map((product)=>{
+     cartTotal = cartTotal + (product.qty *  product.price);
+   }
+   );
+   return cartTotal
+  }
+
   // now for a class component to be a react component we need to give the class component a method called as render
   render (){
     // getting products from state to pass to cart.js
@@ -193,7 +226,9 @@ class App extends React.Component {
                 onDecreaseQuantity = {this.handleDecreaseQuantity}
                 onDeleteProduct = {this.handleDeleteProduct}/>
 
-        
+        <div style={{fontSize : 20 , padding : 10}}>
+          Total = Rs {this.getCartTotal()}
+        </div>
     </div>
   );
   }
