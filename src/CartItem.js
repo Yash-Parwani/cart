@@ -1,21 +1,21 @@
 // importing react so that we can make a class CartItem which will inherit component class from react
 import React from 'react'
 
-class CartItem extends React.Component {
+const CartItem = (props) => {
 
 
 
-    // now for a class component to be a react component we need to give the class component a method called as render
-    render() {
+    
+    
 
-        console.log("The properties insidee props are : ", this.props);
+        console.log("The properties insidee props are : ", props);
         // using object destructuring to avoid repeatedly using this.state / this.props
 
-        const { product, onIncreaseQuantity, onDecreaseQuantity, onDeleteProduct } = this.props
+        const { product, onIncreaseQuantity, onDecreaseQuantity, onDeleteProduct } = props
 
 
 
-        const { price, title, qty } = this.props.product;
+        const { price, title, qty } = props.product;
         // this method should return some jsx which will define ui of the component
 
         return (
@@ -48,7 +48,7 @@ class CartItem extends React.Component {
                 </div>
             </div>
         )
-    }
+   
 }
 
 
